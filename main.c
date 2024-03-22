@@ -23,7 +23,6 @@ int main(){
             int erro = deletar(tarefas, &pos);
         }else if (opcao == 3) {
             int erro = listar(tarefas, pos);
-
         }else if (opcao == 0) {
             printf("Sair\n");
         }else {
