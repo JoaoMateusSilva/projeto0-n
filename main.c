@@ -11,8 +11,8 @@ int main(){
         printf("1 - Criar Tarefa\n");
         printf("2 - deletar tarefa\n");
         printf("3 - listar tarefas\n");
-        printf("0 - Sair \n");
-        printf("Entre com uma opcao: ");
+        printf("0 - Sair\n");
+        printf("Entre com uma opcao: \n");
         
         int i = scanf("%d", &opcao);
         
@@ -27,7 +27,7 @@ int main(){
         }else if (opcao == 0) {
             printf("Sair\n");
         }else {
-            printf("opcao invalida");
+            printf("opcao invalida!\n");
         }
         
     } while(opcao != 0);  
