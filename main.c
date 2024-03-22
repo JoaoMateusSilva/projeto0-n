@@ -25,7 +25,7 @@ int main() {
     } else if (opcao == 0) {
       printf("Sair\n");
     } else {
-      printf("opcao invalida");
+      printf("opcao invalida!\n");
     }
 
   } while (opcao != 0);
