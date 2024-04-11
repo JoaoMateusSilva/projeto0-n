@@ -1,61 +1,34 @@
-#include "tarefas.h"
 #include <stdio.h>
+#include "tarefas.h"
 
-int main() {
-  int pos = 0;
-  Tarefa tarefas[TOTAL];
+int main(){
+    funcao fs[] = {criar, deletar, listar, salvar, carregar}; //aqui é criado um array com as funções disponiveis para facilitar a chamada das mesmas.
 
-  Erro e = carregar(tarefas, TOTAL, &pos);
-  if(e == ABRIR){
-    printf("erro ao abrir o arquivo\n");
-    pos = 0;
-  }
-  else if(e == FECHAR){
-    printf("erro ao fechar o arquivo\n");
-    pos = 0;
-  }
-  else if(e == LER){
-    printf("erro ao ler no arquivo\n");
-    pos = 0;
-  }
+    Tarefa tarefas[TOTAL]; //nesse array é definido como tamanho (TOTAL=100) de tarefas possíveis para criar.
+    int pos;
+    ERROS erro = fs[4](tarefas, &pos); //aqui é chamada a função carregar através do array criado anteriormente.
+    if(erro != OK)
+        pos = 0;
 
-  int opcao;
-  do {
-    printf("\nMenu principal\n");
-    printf("1 - Criar tarefa\n");
-    printf("2 - Deletar tarefa\n");
-    printf("3 - Listar tarefas\n");
-    printf("0 - Sair\n");
-    printf("Entre com uma opcao: ");
-    int i = scanf("%d", &opcao);
+    int opcao; // as opções são escolhidas através de um numero inteiro que o úsuario digitar.
+    do{
+        printf("\nMenu principal\n"); //esses prints servem para mostrar ao úsuario as possíveis funções que ele pode executar nesse programa.
+        printf("1 - Criar tarefa\n"); 
+        printf("2 - Deletar tarefa\n");
+        printf("3 - Listar tarefas\n");
+        printf("0 - Sair\n");
+        printf("Escolha uma opcao: "); 
 
-    printf("Opcao escolhida: %d\n", opcao);
-    if (opcao == 1) {
-      e = criar(tarefas, &pos);
-      if(e == MAX_TAREFAS)
-        printf("maximo de tarefas alcancadas\n");
-    } else if (opcao == 2) {
-      e = deletar(tarefas, &pos);
-      if(e == SEM_TAREFAS)
-        printf("sem tarefas para deletar\n");
-      else if(e == NAO_EXISTE)
-        printf("tarefa nao existe\n");
-    } else if (opcao == 3) {
-      e = listar(tarefas, pos);
-      if(e == SEM_TAREFAS)
-        printf("sem tarefas para listar\n");
-    } else if (opcao == 0) {
-      printf("Sair\n");
-      e = salvar(tarefas, TOTAL, pos);
-      if(e == ABRIR)
-        printf("erro ao abrir o arquivo\n");
-      else if(e == FECHAR)
-        printf("erro ao fechar o arquivo\n");
-      else if(e == ESCREVER)
-        printf("erro ao escrever no arquivo\n");
-    } else {
-      printf("opcao invalida");
-    }
+        scanf("%d", &opcao); //aqui pega a opção que o úsuario escolheu, que no caso tem que ser um número inteiro de 0 a 3.
+        opcao--;
+        if(opcao > 3)
+            printf("Opcao invalida\n"); //caso o úsuario digite um número acima de 3 o retorno é dado como inválido.
+        else if(opcao >= 0)
+            fs[opcao](tarefas, &pos);
+        else
+            printf("Sair...\n");
 
-  } while (opcao != 0);
+    } while(opcao >= 0); //enquanto a opção for diferente de zero o programa irá repetir as etapas anteriores.
+
+    fs[3](tarefas, &pos); //se a opção escolhida for a 0 o programa chamará função 3(salvar) e encerrará o programa.
 }
