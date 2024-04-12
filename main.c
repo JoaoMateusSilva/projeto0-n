@@ -9,11 +9,11 @@ int main(){
     int pos;
     
     ERROS erro = fs[4](tarefas, &pos); //aqui é chamada a função carregar através do array criado anteriormente.
-    if(erro != OK)
+    if(erro != OK){
         if(erro == ABRIR){
         printf("erro ao abrir o arquivo\n");
         pos = 0;
-        }
+        } 
         else if(erro == FECHAR){
             printf("erro ao fechar o arquivo\n");
             pos = 0;
@@ -22,6 +22,7 @@ int main(){
             printf("erro ao ler no arquivo\n");
             pos = 0;
         }
+      }
 
     int opcao; // as opções são escolhidas através de um numero inteiro que o úsuario digitar.
     
@@ -44,13 +45,13 @@ int main(){
             printf("Opcao invalida\n"); //caso o úsuario digite um número menor que 0 o retorno é dado como inválido.
         else if(opcao == 1) {
             ERROS erro = fs[0](tarefas, &pos);
-            if(erro == MAX_TAREFAS)
+            if(erro == MAX_TAREFA)
                 printf("maximo de tarefas alcancadas\n");
         } else if (opcao == 2) {
             ERROS erro = fs[1](tarefas, &pos);
             if(erro == SEM_TAREFAS)
                 printf("sem tarefas para deletar\n");
-            else if(erro == NAO_EXISTE)
+            else if(erro == NAO_ENCONTRADO)
                 printf("tarefa nao existe\n");          
         } else if (opcao == 3) {
             ERROS erro = fs[2](tarefas, &pos);
