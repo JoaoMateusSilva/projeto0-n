@@ -7,7 +7,7 @@ ERROS criar(Tarefa tarefas[], int *pos){ //nessa função é possível criar tar
         return MAX_TAREFA;
 
     printf("Entre com a prioridade: "); //se for possível criar uma tarefa, você terá que fornecer 3 informações: a prioridade, a categoria e a descrição.
-    scanf("%d", &tarefas[*pos].prioridade,); //na prioridade o úsuario fornece um número para demonstrar o quanto a tarefa é importante.
+    scanf("%d", &tarefas[*pos].prioridade); //na prioridade o úsuario fornece um número para demonstrar o quanto a tarefa é importante.
     
     if(tarefas[*pos].prioridade < 1 || tarefas[*pos].prioridade > 10) 
         return NUMERO_INVALIDO;
