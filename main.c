@@ -27,7 +27,38 @@ int main(){
             fs[opcao](tarefas, &pos);
         else
             printf("Sair...\n");
-
+        
+        switch (erro) {
+            case OK:
+                break;
+            case MAX_TAREFA:
+                printf("Erro: Não é possível criar mais tarefas.\n");
+                break;
+            case SEM_TAREFAS:
+                printf("Erro: Não existem tarefas para deletar ou listar.\n");
+                break;
+            case NAO_ENCONTRADO:
+                printf("Erro: Tarefa não encontrada.\n");
+                break;
+            case NUMERO_INVALIDO:
+                printf("Erro: Prioridade inválida.\n");
+                break;
+            case ABRIR:
+                printf("Erro: Não foi possível abrir o arquivo.\n");
+                break;
+            case LER:
+                printf("Erro: Não foi possível ler o arquivo.\n");
+                break;
+            case ESCREVER:
+                printf("Erro: Não foi possível escrever no arquivo.\n");
+                break;
+            case FECHAR:
+                printf("Erro: Não foi possível fechar o arquivo.\n");
+                break;
+            default:
+                printf("Erro desconhecido.\n");
+                break;
+        }
     } while(opcao >= 0); //enquanto a opção for diferente de zero o programa irá repetir as etapas anteriores.
 
     fs[3](tarefas, &pos); //se a opção escolhida for a 0 o programa chamará função 3(salvar) e encerrará o programa.
