@@ -17,11 +17,13 @@ ERROS criar(Tarefa tarefas[], int *pos){ //nessa função é possível criar tar
     printf("Entre com a categoria: ");          //e por fim na descrição o úsuario pode escrever no máximo 300 caracteres.
     fgets(tarefas[*pos].categoria, CATEGORIA, stdin);  //tudo isso é realizado para a criação de uma tarefa.
     tarefas[*pos].categoria[strcspn(tarefas[*pos].categoria, "\n")] = '\0';
-
+    clearBuffer();
+    
     printf("Entre com a descricao: ");
     fgets(tarefas[*pos].descricao, DESCRICAO, stdin);
     tarefas[*pos].descricao[strcspn(tarefas[*pos].descricao, "\n")] = '\0';
-
+    clearBuffer();
+    
     *pos = *pos + 1; //aqui a posição é somada com 1 para quando salvar uma tarefa essa tarefa não salve na posição de outra tarefa e a substitua.
     //assim cada tarefa tem sua posição única.
     return OK; //caso o código não dê nenhum erro é retornado OK.
@@ -30,9 +32,12 @@ ERROS criar(Tarefa tarefas[], int *pos){ //nessa função é possível criar tar
 ERROS deletar(Tarefa tarefas[], int *pos){ //nessa função é possível deletar tarefas se existirem tarefas e se o número da posição da tarefa fornecido equivaler a uma tarefa.
     if(*pos == 0) //aqui realiza a verificação se existem tareafas, caso não exista, retornará SEM_TAREFAS.
         return SEM_TAREFAS; 
+    
     int pos_deletar; 
+    
     printf("Entre com a posicao da tarefa a ser deletada: "); //é solicitado ao úsuario escolher a posição da tarefa que deseja deletar, se ela não existir o programa retoranará NAO_ENCONTRADO.
     scanf("%d", &pos_deletar); 
+    
     pos_deletar--; // garante a posição certa no array.
     if(pos_deletar >= *pos || pos_deletar < 0)
         return NAO_ENCONTRADO;
