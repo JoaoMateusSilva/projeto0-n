@@ -27,47 +27,56 @@ int main(){
 
     int opcao;
     
-    do {
-        printf("\nMenu principal\n");
-        printf("1 - Criar tarefa\n");
+   do{
+        printf("\nMenu principal\n"); 
+        printf("1 - Criar tarefa\n"); 
         printf("2 - Deletar tarefa\n");
         printf("3 - Listar tarefas\n");
-        printf("4 - Exportar tarefas\n");
         printf("0 - Sair\n");
-        printf("Entre com uma opcao: ");
-        
-        int i = scanf("%d", &opcao);
+        printf("Escolha uma opcao: "); 
 
-        printf("Opcao escolhida: %d\n", opcao);
-        
+        scanf("%d", &opcao); 
         opcao--;
-        if(opcao > 4)
-            printf("Opcao invalida\n");
-        if(opcao < 0)
-            printf("Opcao invalida\n");
-        else if(opcao == 1) {
-            ERROS errocriar = fs[0](tarefas, &pos);
-            if(errocriar == MAX_TAREFA)
-                printf("maximo de tarefas alcancadas\n");
-        } else if (opcao == 2) {
-            ERROS errodeletar = fs[1](tarefas, &pos);
-            if(errodeletar == SEM_TAREFAS)
-                printf("sem tarefas para deletar\n");
-            else if(errodeletar == NAO_ENCONTRADO)
-                printf("tarefa nao existe\n");          
-        } else if (opcao == 3) {
-            ERROS errolistar = fs[2](tarefas, &pos);
-            if(errolistar == SEM_TAREFAS)
-                printf("sem tarefas para listar\n");
-        } else if (opcao == 3) {
-            ERROS erroexportar = fs[4](tarefas, &pos);
-            if(erroexportar == SEM_TAREFAS)
-                printf("sem tarefas para exportar\n");
-        } else {
+        if(opcao > 3)
+            printf("Opcao invalida\n"); 
+        else if(opcao >= 0)
+            fs[opcao](tarefas, &pos);
+        else
             printf("Sair...\n");
-        }
-            
-    } while(opcao >= 0);
+        
+        switch (erro) {
+        case OK:
+            break;
+        case MAX_TAREFA:
+            printf("Erro: Não é possível criar mais tarefas.\n");
+            break;
+        case SEM_TAREFAS:
+            printf("Erro: Não existem tarefas para deletar ou listar.\n");
+            break;
+        case NAO_ENCONTRADO:
+            printf("Erro: Tarefa não encontrada.\n");
+            break;
+        case NUMERO_INVALIDO:
+            printf("Erro: Prioridade inválida.\n");
+            break;
+        case ABRIR:
+            printf("Erro: Não foi possível abrir o arquivo.\n");
+            break;
+        case LER:
+            printf("Erro: Não foi possível ler o arquivo.\n");
+            break;
+        case ESCREVER:
+            printf("Erro: Não foi possível escrever no arquivo.\n");
+            break;
+        case FECHAR:
+            printf("Erro: Não foi possível fechar o arquivo.\n");
+            break;
+        default:
+            printf("Erro desconhecido.\n");
+            break;
+    }
+    
+    } while(opcao >= 0); 
 
     ERROS errosalvar = fs[3](tarefas, &pos);
     if(erro == ABRIR)
