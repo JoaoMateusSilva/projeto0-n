@@ -46,18 +46,18 @@ int main(){
         if(opcao < 0)
             printf("Opcao invalida\n"); //caso o úsuario digite um número menor que 0 o retorno é dado como inválido.
         else if(opcao == 1) {
-            ERROS erro = fs[0](tarefas, &pos);
-            if(erro == MAX_TAREFA)
+            ERROS errocriar = fs[0](tarefas, &pos);
+            if(errocriar == MAX_TAREFA)
                 printf("maximo de tarefas alcancadas\n");
         } else if (opcao == 2) {
-            ERROS erro = fs[1](tarefas, &pos);
-            if(erro == SEM_TAREFAS)
+            ERROS errodeletar = fs[1](tarefas, &pos);
+            if(errodeletar == SEM_TAREFAS)
                 printf("sem tarefas para deletar\n");
-            else if(erro == NAO_ENCONTRADO)
+            else if(errodeletar == NAO_ENCONTRADO)
                 printf("tarefa nao existe\n");          
         } else if (opcao == 3) {
-            ERROS erro = fs[2](tarefas, &pos);
-            if(erro == SEM_TAREFAS)
+            ERROS errolistar = fs[2](tarefas, &pos);
+            if(errolistar == SEM_TAREFAS)
                 printf("sem tarefas para listar\n");
         } else {
             printf("Sair...\n");
@@ -65,7 +65,7 @@ int main(){
             
     } while(opcao >= 0); //enquanto a opção for diferente de zero o programa irá repetir as etapas anteriores.
 
-    ERROS erro = fs[3](tarefas, &pos); //se a opção escolhida for a 0 o programa chamará função 3(salvar) e encerrará o programa.
+    ERROS errosalvar = fs[3](tarefas, &pos); //se a opção escolhida for a 0 o programa chamará função 3(salvar) e encerrará o programa.
     if(erro == ABRIR)
         printf("erro ao abrir o arquivo\n");
     else if(erro == FECHAR)
