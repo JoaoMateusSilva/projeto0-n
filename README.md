@@ -34,6 +34,7 @@ Projeto que faz tarefas em C da aula de algoritmos
         <li>Função Listar:  Exibe ao usuário aLista de todas as tarefas criadas, exibindo sua prioridade, categoria e descrição.</li>
         <li>Função Salvar: Salva as tarefas e a posição atual no arquivo "tarefas.bin" para que possam ser carregadas posteriormente.</li>
         <li>Função Carregar: Carrega as tarefas e a posição salvas anteriormente no arquivo em binario "tarefas.bin".</li>
+        <li>Função Exportar: Exporta as tarefas criadas para um arquivo de texto simples.</li>
     </ul>
 </p>
 
