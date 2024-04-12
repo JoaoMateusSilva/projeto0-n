@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <string.h>
 #include "tarefas.h"
+
 
 int main(){
     funcao fs[] = {criar, deletar, listar, salvar, carregar}; //aqui é criado um array com as funções disponiveis para facilitar a chamada das mesmas.
