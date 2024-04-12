@@ -7,7 +7,7 @@ ERROS criar(Tarefa tarefas[], int *pos){ //nessa função é possível criar tar
         return MAX_TAREFA;
 
     printf("Entre com a prioridade: "); //se for possível criar uma tarefa, você terá que fornecer 3 informações: a prioridade, a categoria e a descrição.
-    scanf("%d", &tarefas[*pos].prioridade,); //na prioridade o úsuario fornece um número para demonstrar o quanto a tarefa é importante.
+    scanf("%d", &tarefas[*pos].prioridade); //na prioridade o úsuario fornece um número para demonstrar o quanto a tarefa é importante.
     
     if(tarefas[*pos].prioridade < 1 || tarefas[*pos].prioridade > 10) 
         return NUMERO_INVALIDO;
@@ -17,12 +17,10 @@ ERROS criar(Tarefa tarefas[], int *pos){ //nessa função é possível criar tar
     printf("Entre com a categoria: ");          //e por fim na descrição o úsuario pode escrever no máximo 300 caracteres.
     fgets(tarefas[*pos].categoria, CATEGORIA, stdin);  //tudo isso é realizado para a criação de uma tarefa.
     tarefas[*pos].categoria[strcspn(tarefas[*pos].categoria, "\n")] = '\0';
-    clearBuffer();
     
     printf("Entre com a descricao: ");
     fgets(tarefas[*pos].descricao, DESCRICAO, stdin);
     tarefas[*pos].descricao[strcspn(tarefas[*pos].descricao, "\n")] = '\0';
-    clearBuffer();
     
     *pos = *pos + 1; //aqui a posição é somada com 1 para quando salvar uma tarefa essa tarefa não salve na posição de outra tarefa e a substitua.
     //assim cada tarefa tem sua posição única.
