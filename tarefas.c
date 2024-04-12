@@ -13,11 +13,15 @@ ERROS criar(Tarefa tarefas[], int *pos){ //nessa função é possível criar tar
         return NUMERO_INVALIDO;
     
     clearBuffer();                              //na categoria o úsuario pode escrever até um máximo de 100 caracteres.
-    printf("Entre com a categoria: ");          //e por fim na descrição o úsuario pode escrever no máximo 300 caracteres.
-    fgets(tarefas[*pos].categoria, 100, stdin); //tudo isso é realizado para a criação de uma tarefa.
-    printf("Entre com a descricao: ");
-    fgets(tarefas[*pos].descricao, 300, stdin);
     
+    printf("Entre com a categoria: ");          //e por fim na descrição o úsuario pode escrever no máximo 300 caracteres.
+    fgets(tarefas[*pos].categoria, CATEGORIA, stdin);  //tudo isso é realizado para a criação de uma tarefa.
+    tarefas[*pos].categoria[strcspn(tarefas[*pos].categoria, "\n")] = '\0';
+
+    printf("Entre com a descricao: ");
+    fgets(tarefas[*pos].descricao, DESCRICAO, stdin);
+    tarefas[*pos].descricao[strcspn(tarefas[*pos].descricao, "\n")] = '\0';
+
     *pos = *pos + 1; //aqui a posição é somada com 1 para quando salvar uma tarefa essa tarefa não salve na posição de outra tarefa e a substitua.
     //assim cada tarefa tem sua posição única.
     return OK; //caso o código não dê nenhum erro é retornado OK.

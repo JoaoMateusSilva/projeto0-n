@@ -5,8 +5,8 @@
 
 typedef struct { //struct usado na hora de criar tarefas utilizados para definir a prioridade como um número inteiro e a descrição e a categoria como arrays de 300 e 100 de espaços respectivamente.
     int prioridade;
-    char descricao[CATEGORIA];
-    char categoria[DESCRICAO];
+    char descricao[DESCRICAO];
+    char categoria[CATEGORIA];
 } Tarefa;
 
 typedef enum {OK, MAX_TAREFA, SEM_TAREFAS, NAO_ENCONTRADO, ABRIR, FECHAR, ESCREVER, LER, NUMERO_INVALIDO} ERROS; //aqui define os erros possíveis na hora da execução das tarefas.
