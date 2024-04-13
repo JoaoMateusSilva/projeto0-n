@@ -141,18 +141,15 @@ ERROS exportar(Tarefa tarefas[], int *pos) {
     if (*pos == 0)
         return SEM_TAREFAS;
 
-    char nome_arquivo[100];
+    char nome_arquivo[TOTAL];
+    
     printf("Entre com o nome do arquivo para exportar: ");
-    fgets(nome_arquivo, 100, stdin);
+    fgets(nome_arquivo, TOTAL, stdin);
     nome_arquivo[strcspn(nome_arquivo, "\n")] = '\0';
   
     FILE *f = fopen(nome_arquivo, "w");
     if (f == NULL)
         return ABRIR;
-
-    if (f == NULL) {
-        return ABRIR;
-    }
 
     for (int i = 0; i < *pos; i++) {
         fprintf(f, "Prioridade: %d, Categoria: %s, Descricao: %s\n",tarefas[i].prioridade, tarefas[i].categoria, tarefas[i].descricao);
